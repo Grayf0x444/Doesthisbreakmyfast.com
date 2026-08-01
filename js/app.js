@@ -1,16 +1,15 @@
 /* ==========================================================================
-   App logic: quick-check filtering, energy matrix, glossary/evidence
-   accordions, scrollspy nav, back-to-top.
+   App logic: all content (item cards, product-type table, glossary,
+   evidence) lives in the static HTML already — this file only adds
+   filtering, expand/collapse, the energy verdict tool, and navigation
+   behavior on top of it. Nothing here injects primary content, so the
+   page reads correctly with JavaScript disabled.
    ========================================================================== */
 
 (function () {
   "use strict";
 
-  const SYMBOL_META = {
-    pass: { icon: "✅", label: "Does not break a fast" },
-    warn: { icon: "⚠️", label: "Depends on definition" },
-    fail: { icon: "❌", label: "Breaks a fast" }
-  };
+  const SYMBOL_LABEL = { pass: "Passes", warn: "Depends", fail: "Breaks it" };
 
   /* ------------------------------------------------------------ Quick Check */
   const state = {
@@ -21,50 +20,32 @@
   };
 
   const resultsEl = document.getElementById("results");
+  const cards = Array.from(resultsEl.querySelectorAll(".card"));
   const countEl = document.getElementById("result-count");
   const emptyEl = document.getElementById("empty-state");
   const searchInput = document.getElementById("search-input");
 
-  function cardTemplate(item) {
-    const meta = SYMBOL_META[item.symbol];
-    const religiousBadge = item.religious
-      ? `<span class="badge badge--religious" title="Breaks a religious fast even where metabolically neutral">🕌</span>`
-      : "";
-    return `
-      <article class="card card--${item.symbol}" data-id="${item.id}">
-        <button class="card__head" aria-expanded="false">
-          <span class="card__symbol" aria-hidden="true">${meta.icon}</span>
-          <span class="card__titles">
-            <span class="card__name">${item.name}</span>
-            <span class="card__examples">${item.examples}</span>
-          </span>
-          ${religiousBadge}
-          <span class="card__chevron" aria-hidden="true">▾</span>
-        </button>
-        <p class="card__summary">${item.summary}</p>
-        <div class="card__detail">
-          <p>${item.detail}</p>
-        </div>
-      </article>`;
-  }
+  function matches(card) {
+    const category = card.dataset.category;
+    const symbol = card.dataset.symbol;
+    const religious = card.dataset.religious === "true";
 
-  function matches(item) {
-    if (state.category !== "all" && item.category !== state.category) return false;
-    if (!state.symbols.has(item.symbol)) return false;
-    if (state.religiousOnly && !item.religious) return false;
-    if (state.query) {
-      const haystack = (item.name + " " + item.examples + " " + item.detail).toLowerCase();
-      if (!haystack.includes(state.query)) return false;
-    }
+    if (state.category !== "all" && category !== state.category) return false;
+    if (!state.symbols.has(symbol)) return false;
+    if (state.religiousOnly && !religious) return false;
+    if (state.query && !card.textContent.toLowerCase().includes(state.query)) return false;
     return true;
   }
 
   function render() {
-    const filtered = ITEMS.filter(matches);
-    resultsEl.innerHTML = filtered.map(cardTemplate).join("");
-    countEl.textContent = `Showing ${filtered.length} of ${ITEMS.length} items`;
-    emptyEl.hidden = filtered.length !== 0;
-    resultsEl.hidden = filtered.length === 0;
+    let visible = 0;
+    cards.forEach((card) => {
+      const show = matches(card);
+      card.classList.toggle("is-hidden", !show);
+      if (show) visible += 1;
+    });
+    countEl.textContent = `Showing ${visible} of ${cards.length} items`;
+    emptyEl.hidden = visible !== 0;
   }
 
   searchInput.addEventListener("input", (e) => {
@@ -81,7 +62,7 @@
     });
   });
 
-  document.querySelectorAll("[data-symbol]").forEach((chip) => {
+  document.querySelectorAll(".qc-chips [data-symbol]").forEach((chip) => {
     chip.addEventListener("click", () => {
       const sym = chip.dataset.symbol;
       if (state.symbols.has(sym)) {
@@ -110,7 +91,7 @@
     state.religiousOnly = false;
     searchInput.value = "";
     document.querySelectorAll("[data-category]").forEach((b) => b.classList.toggle("is-active", b.dataset.category === "all"));
-    document.querySelectorAll("[data-symbol]").forEach((c) => c.classList.remove("is-off"));
+    document.querySelectorAll(".qc-chips [data-symbol]").forEach((c) => c.classList.remove("is-off"));
     religiousToggle.classList.remove("is-active");
     religiousToggle.setAttribute("aria-pressed", "false");
     render();
@@ -130,46 +111,34 @@
   const matrixBody = document.getElementById("energy-matrix-body");
   const productSelect = document.getElementById("energy-select");
   const verdictOut = document.getElementById("energy-verdict");
-
-  function renderMatrix() {
-    matrixBody.innerHTML = ENERGY_MATRIX.map((row) => `
-      <tr data-type="${row.type}">
-        <th scope="row">${row.type}</th>
-        <td class="cell cell--${row.fatLoss.symbol}"><span>${SYMBOL_META[row.fatLoss.symbol].icon}</span><small>${row.fatLoss.note}</small></td>
-        <td class="cell cell--${row.autophagy.symbol}"><span>${SYMBOL_META[row.autophagy.symbol].icon}</span><small>${row.autophagy.note}</small></td>
-        <td class="cell cell--${row.cleanFast.symbol}"><span>${SYMBOL_META[row.cleanFast.symbol].icon}</span><small>${row.cleanFast.note}</small></td>
-      </tr>`).join("");
-  }
-  renderMatrix();
-
-  ENERGY_MATRIX.forEach((row) => {
-    const opt = document.createElement("option");
-    opt.value = row.type;
-    opt.textContent = row.type;
-    productSelect.appendChild(opt);
-  });
-
   const laneRadios = document.querySelectorAll('input[name="energy-lane"]');
 
   function updateVerdict() {
     const type = productSelect.value;
+    document.querySelectorAll("#energy-matrix-body tr").forEach((tr) => {
+      tr.classList.toggle("is-highlight", type !== "" && tr.dataset.type === type);
+    });
+
     if (!type) {
       verdictOut.innerHTML = `<p class="muted">Pick a product above to see its verdict.</p>`;
       return;
     }
-    const row = ENERGY_MATRIX.find((r) => r.type === type);
+
+    const row = matrixBody.querySelector(`tr[data-type="${CSS.escape(type)}"]`);
+    if (!row) return;
     const lane = [...laneRadios].find((r) => r.checked).value;
-    const cell = row[lane];
-    const meta = SYMBOL_META[cell.symbol];
-    document.querySelectorAll("#energy-matrix-body tr").forEach((tr) => {
-      tr.classList.toggle("is-highlight", tr.dataset.type === type);
-    });
+    const cell = row.querySelector(`[data-lane="${lane}"]`);
+    const symbol = cell.dataset.symbol;
+    const note = cell.dataset.note;
+    const label = SYMBOL_LABEL[symbol];
+    const icon = cell.querySelector(".cell__icon").textContent;
+
     verdictOut.innerHTML = `
-      <div class="verdict verdict--${cell.symbol}">
-        <span class="verdict__icon" aria-hidden="true">${meta.icon}</span>
+      <div class="verdict verdict--${symbol}">
+        <span class="verdict__icon" aria-hidden="true">${icon}</span>
         <div>
-          <strong>${meta.label}</strong>
-          <p>${cell.note}</p>
+          <strong>${label}</strong>
+          <p>${note}</p>
         </div>
       </div>`;
   }
@@ -178,32 +147,7 @@
   laneRadios.forEach((r) => r.addEventListener("change", updateVerdict));
   updateVerdict();
 
-  /* --------------------------------------------------------------- Glossary */
-  const glossaryList = document.getElementById("glossary-list");
-  glossaryList.innerHTML = GLOSSARY.map((g, i) => `
-    <div class="accordion__item">
-      <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-${i}">
-        <span>${g.term}</span>
-        <span class="accordion__chevron" aria-hidden="true">▾</span>
-      </button>
-      <div class="accordion__panel" id="gloss-${i}">
-        <p>${g.body}</p>
-      </div>
-    </div>`).join("");
-
-  /* --------------------------------------------------------------- Evidence */
-  const evidenceList = document.getElementById("evidence-list");
-  evidenceList.innerHTML = EVIDENCE.map((ev, i) => `
-    <div class="accordion__item">
-      <button class="accordion__trigger" aria-expanded="false" aria-controls="ev-${i}">
-        <span>${ev.title}</span>
-        <span class="accordion__chevron" aria-hidden="true">▾</span>
-      </button>
-      <div class="accordion__panel" id="ev-${i}">
-        <p>${ev.body}</p>
-      </div>
-    </div>`).join("");
-
+  /* ---------------------------------------------------- Glossary / Evidence */
   document.querySelectorAll(".accordion__trigger").forEach((btn) => {
     btn.addEventListener("click", () => {
       const item = btn.closest(".accordion__item");

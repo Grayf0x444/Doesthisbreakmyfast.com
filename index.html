@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Breaks a Fast? — A Reference Guide</title>
+<title>Does This Break My Fast? — A Reference Guide</title>
 <meta name="description" content="A quick-check reference for whether a food, drink, or product breaks a fast — sorted by which definition of 'fasting' you're actually using. Not medical advice.">
+<meta property="og:title" content="Does This Break My Fast? — A Reference Guide">
+<meta property="og:description" content="A quick-check reference for whether a food, drink, or product breaks a fast — sorted by which definition of 'fasting' you're actually using. Not medical advice.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://doesthisbreakmyfast.com/">
+<meta property="og:site_name" content="Does This Break My Fast?">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Does This Break My Fast? — A Reference Guide">
+<meta name="twitter:description" content="A quick-check reference for whether a food, drink, or product breaks a fast — sorted by which definition of 'fasting' you're actually using. Not medical advice.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏳</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +29,7 @@
 
 <nav class="sitenav" aria-label="Section navigation">
   <div class="sitenav__bar">
-    <a class="sitenav__brand" href="#top">What Breaks<span>Fast</span>?</a>
+    <a class="sitenav__brand" href="#top">Does This Break<span>My Fast</span>?</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰ Menu</button>
     <ul class="sitenav__links" id="site-nav">
       <li><a class="sitenav__link" href="#definitions">Definitions</a></li>
@@ -43,10 +51,12 @@
     <p class="hero__meta">Product formulations verified against manufacturer labels, July 2026. Formulations change — treat specific numbers as approximate.</p>
     <p class="hero__lede">
       “Does this break my fast?” isn't one question. It's six. A cup of bone broth is
-      <strong>permitted</strong> on a gut-rest protocol, <strong>permitted</strong> as a pre-surgical
-      clear liquid, <strong>disqualifying</strong> for an autophagy fast, and <strong>forbidden</strong>
-      during Ramadan. All four are correct — they're answering different questions. This guide sorts
-      answers by the definition being used.
+      <strong>permitted</strong> on a gut-rest protocol, <strong>disqualifying</strong> for an
+      autophagy fast, and <strong>forbidden</strong> during Ramadan — three correct answers to
+      three different questions. It also gets waved through as a “pre-surgical clear liquid” more
+      often than it should: strained broth still carries enough protein and fat that many
+      clear-liquid protocols <strong>exclude</strong> it. This guide sorts answers by the
+      definition being used.
     </p>
     <div class="hero__quick">
       <a class="btn btn--primary" href="#quick-check">Jump to Quick Check ↓</a>
@@ -83,7 +93,7 @@
             <tr>
               <th scope="row">Autophagy / cellular repair</th>
               <td>Amino acids, particularly leucine</td>
-              <td class="rule-note">Calories matter less here than protein content. <strong>Amino acids are the operative variable.</strong></td>
+              <td class="rule-note">Calories matter less here than protein content. <strong>Amino acids are the operative variable</strong> — though not all amino acids carry equal weight; see the label-reading guide below.</td>
             </tr>
             <tr>
               <th scope="row">Blood sugar / insulin</th>
@@ -124,19 +134,19 @@
       <h3 style="margin-top:40px;">Key</h3>
       <div class="key-grid">
         <div class="key-item">
-          <span class="key-item__icon">✅</span>
+          <span class="key-item__icon" aria-hidden="true">✅</span>
           <span class="key-item__label"><strong>Passes everywhere</strong>Does not break a fast under any metabolic definition</span>
         </div>
         <div class="key-item">
-          <span class="key-item__icon">⚠️</span>
+          <span class="key-item__icon" aria-hidden="true">⚠️</span>
           <span class="key-item__label"><strong>Depends on definition</strong>The answer differs by lane — notes explain which</span>
         </div>
         <div class="key-item">
-          <span class="key-item__icon">❌</span>
+          <span class="key-item__icon" aria-hidden="true">❌</span>
           <span class="key-item__label"><strong>Breaks it</strong>Breaks a fast under all common metabolic definitions</span>
         </div>
         <div class="key-item">
-          <span class="key-item__icon">🕌</span>
+          <span class="key-item__icon" aria-hidden="true">🕌</span>
           <span class="key-item__label"><strong>Religious flag</strong>Breaks a religious fast even where metabolically neutral</span>
         </div>
       </div>
@@ -148,7 +158,7 @@
     <div class="container">
       <p class="section-eyebrow">The tool</p>
       <h2>Quick Check: Beverages, Foods &amp; Additives</h2>
-      <p class="section-lede">Search or filter to find an item, then tap it to expand the full reasoning.</p>
+      <p class="section-lede">Search or filter to find an item, then tap it to expand the full reasoning. (Everything below is real content — filtering and expanding just need JavaScript; the full list still reads fine without it.)</p>
 
       <div class="qc-controls">
         <div class="qc-search">
@@ -163,17 +173,338 @@
         </div>
         <div class="qc-row">
           <div class="qc-chips">
-            <button class="chip chip--pass" data-symbol="pass">✅ Passes</button>
-            <button class="chip chip--warn" data-symbol="warn">⚠️ Depends</button>
-            <button class="chip chip--fail" data-symbol="fail">❌ Breaks it</button>
-            <button class="chip chip--religious" id="religious-toggle" aria-pressed="false">🕌 Religious flag only</button>
+            <button class="chip chip--pass" data-symbol="pass"><span aria-hidden="true">✅</span> Passes</button>
+            <button class="chip chip--warn" data-symbol="warn"><span aria-hidden="true">⚠️</span> Depends</button>
+            <button class="chip chip--fail" data-symbol="fail"><span aria-hidden="true">❌</span> Breaks it</button>
+            <button class="chip chip--religious" id="religious-toggle" aria-pressed="false"><span aria-hidden="true">🕌</span> Religious flag only</button>
           </div>
           <button class="qc-clear" id="clear-filters">Reset filters</button>
         </div>
       </div>
 
-      <p class="qc-count" id="result-count">Showing all items</p>
-      <div class="results-grid" id="results"></div>
+      <p class="qc-count" id="result-count">Showing all 31 items</p>
+      <div class="results-grid" id="results">
+
+        <article class="card card--pass" data-id="water" data-category="beverage" data-symbol="pass" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Water &amp; ice</span><span class="card__examples">—</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">No calories, no insulin response — the only universally neutral item.</p>
+          <div class="card__detail"><p>No calories, no insulin response. The only universally neutral item under metabolic definitions. Still breaks most complete religious fasts (Ramadan, Yom Kippur, LDS).</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="sparkling-water" data-category="beverage" data-symbol="pass" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Sparkling water</span><span class="card__examples">LaCroix, Topo Chico, Perrier</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Carbonation is just CO₂ — unsweetened versions are metabolically equivalent to water.</p>
+          <div class="card__detail"><p>Carbonation is dissolved CO₂. Unsweetened versions are metabolically equivalent to water. Some contain “natural flavors” — calorie-free, but excluded under strict clean-fast definitions.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="black-coffee" data-category="beverage" data-symbol="pass" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Black coffee</span><span class="card__examples">Brewed or instant</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Roughly 2–5 calories per cup. Caffeine modestly increases fat mobilization.</p>
+          <div class="card__detail"><p>Roughly 2–5 calories per cup. Caffeine modestly increases fat mobilization and metabolic rate. Note the conflict: many labs require water only before bloodwork, though coffee is an approved pre-surgical clear liquid.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="plain-tea" data-category="beverage" data-symbol="pass" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Plain tea</span><span class="card__examples">Black, green, oolong, white, herbal</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Calorie-free. Green tea catechins are linked to modest increases in fat oxidation.</p>
+          <div class="card__detail"><p>Calorie-free. Green tea catechins are associated with modest increases in fat oxidation. Additions (milk, honey, sugar) change the answer.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="yerba-mate" data-category="beverage" data-symbol="pass" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Yerba mate, brewed</span><span class="card__examples">Loose leaf or bagged</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Plain brewed mate is calorie-free. Canned mate is a different product.</p>
+          <div class="card__detail"><p>Plain brewed mate is calorie-free. Canned mate is a different product — most contain sugar or juice.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="acv" data-category="beverage" data-symbol="pass" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Apple cider vinegar</span><span class="card__examples">Bragg and equivalents</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">~3 calories per tablespoon. May modestly blunt post-meal glucose response.</p>
+          <div class="card__detail"><p>About 3 calories per tablespoon. May modestly blunt post-meal glucose response. Undiluted vinegar erodes tooth enamel and irritates the esophagus; dilution in water is standard practice.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="plain-electrolytes" data-category="beverage" data-symbol="pass" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Plain electrolytes</span><span class="card__examples">Sodium, potassium, magnesium</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">No calories, no insulin response. Helps prevent fasting headache and fatigue.</p>
+          <div class="card__detail"><p>No calories, no insulin response. Sodium loss is a recognized contributor to headache and fatigue during longer fasts.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="diet-soda" data-category="beverage" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Diet soda</span><span class="card__examples">Coke Zero, Diet Coke</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Fat-loss: fine. Clean fast: breaks it — sweet taste is the excluded thing.</p>
+          <div class="card__detail"><p>Fat-loss definition: does not break it — no calories, no meaningful insulin response in most people. Clean fast: breaks it; sweet taste is the specific thing excluded. Autophagy: no amino acids, so generally outside the definition.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="flavored-electrolytes" data-category="beverage" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Flavored electrolytes</span><span class="card__examples">LMNT, Nuun, Liquid I.V.</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Not interchangeable — LMNT is calorie-free, Liquid I.V. has ~11g sugar.</p>
+          <div class="card__detail"><p>Not interchangeable products. LMNT: no calories, stevia-sweetened. Nuun: approximately 1g carbohydrate. Liquid I.V.: approximately 11g sugar, which breaks a fast under every metabolic definition. Unflavored electrolytes avoid the ambiguity.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="sweeteners" data-category="beverage" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Non-caloric sweeteners</span><span class="card__examples">Sucralose, stevia, monk fruit, aspartame, erythritol</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">No meaningful insulin response alone. Breaks a clean fast on taste alone.</p>
+          <div class="card__detail"><p>Controlled trials show no meaningful insulin response from these compounds alone. Fat-loss definition: outside it. Clean fast: breaks it. A separate consideration is behavioral — sweet taste is associated with increased craving for some people. Some packets contain maltodextrin or dextrose as bulking agents, which are carbohydrates.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="fat-coffee" data-category="beverage" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Coffee with fat added</span><span class="card__examples">Butter, MCT oil, coconut oil</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">200–400 calories, minimal insulin response — but breaks autophagy and caloric fasts.</p>
+          <div class="card__detail"><p>Roughly 200–400 calories with minimal insulin response. Ketogenic fat-loss definitions: often treated as permitted. Any caloric-restriction definition: breaks it. Autophagy: breaks it — calories suppress autophagy independent of protein.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="kombucha" data-category="beverage" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Kombucha</span><span class="card__examples">GT's, Health-Ade</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">20–60 calories, 2–8g sugar per serving. Breaks most definitions.</p>
+          <div class="card__detail"><p>Typically 20–60 calories and 2–8g sugar per serving. Breaks a fast under most definitions; small volumes fall within some looser fat-loss definitions.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="bone-broth" data-category="beverage" data-symbol="warn" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Bone broth</span><span class="card__examples">Packaged or homemade</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">30–50 cal, 6–10g protein per cup — often assumed clear-liquid safe, but frequently isn't.</p>
+          <div class="card__detail"><p>Roughly 30–50 calories and 6–10g protein per cup, which breaks autophagy and clean-fast definitions. It's often included in gut-rest protocols and fasting-mimicking approaches — but despite its reputation as a “safe” liquid, strained bone broth is protein- and fat-dense enough that many pre-surgical and medical clear-liquid protocols exclude it. Check the specific protocol rather than assuming broth passes.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="coconut-water" data-category="beverage" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Coconut water</span><span class="card__examples">Vita Coco, Harmless Harvest</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">45–60 calories, 9–12g sugar per cup — comparable to fruit juice.</p>
+          <div class="card__detail"><p>45–60 calories and 9–12g sugar per cup. Nutritionally comparable to fruit juice.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="juice" data-category="beverage" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Juice</span><span class="card__examples">Any, including fresh-pressed</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Concentrated sugar without fiber. Rapid insulin response.</p>
+          <div class="card__detail"><p>Concentrated fructose and glucose without fiber. Rapid insulin response. Pulp-free juice is an approved pre-surgical clear liquid — the sole lane where it passes.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="milk-cream" data-category="beverage" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Milk &amp; cream, any quantity</span><span class="card__examples">Dairy and plant milks</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Protein activates mTOR and suppresses autophagy, even in small amounts.</p>
+          <div class="card__detail"><p>Protein content activates mTOR and suppresses autophagy. A tablespoon of cream is roughly 50 calories and 0.4g protein — enough to register.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="alcohol" data-category="beverage" data-symbol="fail" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Alcohol</span><span class="card__examples">Beer, wine, spirits, seltzers</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">7 cal/g. Ethanol metabolism halts fat oxidation; empty-stomach hypoglycemia risk.</p>
+          <div class="card__detail"><p>7 calories per gram. Ethanol metabolism takes hepatic priority, halting fat oxidation. Alcohol on an empty stomach also carries hypoglycemia risk.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="protein-drinks" data-category="beverage" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Protein &amp; amino acid drinks</span><span class="card__examples">Whey, casein, BCAA, EAA, collagen</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">The most direct fast-breaker — amino acids terminate the fasted state.</p>
+          <div class="card__detail"><p>The most direct fast-breaker. Amino acids are the specific signal that terminates the fasted state, regardless of calorie count. These are the established mTOR triggers (whey, collagen, BCAA/EAA blends) — see the label-reading guide below for which amino acids actually count.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="citrus-wedge" data-category="food" data-symbol="pass" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Citrus wedge</span><span class="card__examples">Lemon, lime</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">~1 calorie per wedge. No measurable metabolic effect.</p>
+          <div class="card__detail"><p>Roughly 1 calorie per wedge. No measurable metabolic effect. Lemonade and bottled juice are different products.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="spices" data-category="food" data-symbol="pass" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Plain spices, trace</span><span class="card__examples">Cinnamon, pepper, turmeric</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">A dash carries negligible calories; cinnamon may modestly aid insulin sensitivity.</p>
+          <div class="card__detail"><p>A dash carries negligible calories. Cinnamon is associated with modest improvements in insulin sensitivity.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="toothpaste" data-category="food" data-symbol="pass" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Toothpaste &amp; mouthwash</span><span class="card__examples">Any</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Not swallowed, metabolically irrelevant — but breaks several religious fasts.</p>
+          <div class="card__detail"><p>Not swallowed, metabolically irrelevant. Breaks a religious fast in several traditions — many observant Muslims avoid toothpaste during daylight hours in Ramadan.</p></div>
+        </article>
+
+        <article class="card card--pass" data-id="medication" data-category="food" data-symbol="pass" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">✅</span><span class="card__symbol-label">Passes</span></span>
+            <span class="card__titles"><span class="card__name">Prescription medication</span><span class="card__examples">—</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Should never be stopped or delayed to preserve a fast.</p>
+          <div class="card__detail"><p>Prescribed medication should not be stopped or delayed to preserve a fast. Timing is a question for the prescribing clinician. Some medications require food; some fasting protocols interact with insulin, sulfonylureas, and blood pressure medication.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="gum" data-category="food" data-symbol="warn" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Chewing gum, sugar-free</span><span class="card__examples">Extra, Trident, Orbit</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Evidence is mixed — likely fine for fat loss, excluded before lab work out of caution.</p>
+          <div class="card__detail"><p>Evidence is mixed. A controlled trial in fasted adults found no significant change in glucose or insulin after 30 minutes of chewing. A separate small clinical study (22 volunteers) reported shifts in cortisol, insulin, C-peptide, and triglycerides — a preliminary finding, not a settled one, but cautious enough that standard lab guidance excludes gum before a blood draw anyway. Practical reading: outside a fat-loss definition, excluded before lab work, breaks a clean fast.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="mints" data-category="food" data-symbol="warn" data-religious="true">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Breath mints</span><span class="card__examples">Tic Tac, Altoids, Ice Breakers</span></span>
+            <span class="badge badge--religious"><span aria-hidden="true">🕌</span> Religious flag</span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">1–5 calories per mint — below the fat-loss threshold, but breaks a clean fast.</p>
+          <div class="card__detail"><p>Roughly 1–5 calories per mint — below the threshold that meaningfully affects fat loss or insulin. A standard Tic Tac is largely sugar but small enough to be labeled 0g. Breaks clean and religious fasts; unlikely to affect a fat-loss definition.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="gelatin-capsules" data-category="food" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Gelatin capsules</span><span class="card__examples">Softgels, supplement capsules</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Trace protein, a few calories at most — immaterial to fat loss.</p>
+          <div class="card__detail"><p>Trace protein, a few calories at most. Immaterial to fat loss. Tablets and vegetable capsules avoid the question entirely.</p></div>
+        </article>
+
+        <article class="card card--warn" data-id="fiber" data-category="food" data-symbol="warn" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">⚠️</span><span class="card__symbol-label">Depends</span></span>
+            <span class="card__titles"><span class="card__name">Fiber supplements</span><span class="card__examples">Psyllium husk, methylcellulose</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Minimal calories or insulin effect, but real digestive workload — breaks gut rest.</p>
+          <div class="card__detail"><p>Minimal digestible calories and little insulin response, but meaningful digestive workload — which breaks a gut-rest definition while remaining roughly neutral for fat loss.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="leafy-greens" data-category="food" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Leafy greens</span><span class="card__examples">Spinach, lettuce, arugula</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Low calorie, but still food. Chewing and digestion end the fasted state.</p>
+          <div class="card__detail"><p>Low calorie, but food. Chewing, swallowing, and digestion end the fasted state under every definition.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="seaweed" data-category="food" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Seaweed snacks</span><span class="card__examples">Roasted, salted varieties</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Prepared with oil and salt — enough fat and fiber to initiate digestion.</p>
+          <div class="card__detail"><p>Prepared with oil and salt. Small servings still carry fat and fiber sufficient to initiate digestion.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="rice-paper" data-category="food" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Rice paper</span><span class="card__examples">Spring roll wrappers</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Refined starch. Rapid glucose and insulin response.</p>
+          <div class="card__detail"><p>Refined starch. Rapid glucose and insulin response.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="fruit" data-category="food" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Fruit</span><span class="card__examples">Whole or dried</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Natural sugar is still metabolically sugar; fiber slows, doesn't eliminate it.</p>
+          <div class="card__detail"><p>Natural sugar is metabolically sugar. Fiber slows absorption without eliminating it.</p></div>
+        </article>
+
+        <article class="card card--fail" data-id="gummy-vitamins" data-category="food" data-symbol="fail" data-religious="false">
+          <button class="card__head" aria-expanded="false">
+            <span class="card__verdict"><span class="card__symbol" aria-hidden="true">❌</span><span class="card__symbol-label">Breaks it</span></span>
+            <span class="card__titles"><span class="card__name">Gummy vitamins</span><span class="card__examples">Any</span></span>
+            <span class="card__chevron" aria-hidden="true">▾</span>
+          </button>
+          <p class="card__summary">Built on a glucose or cane-sugar base. Tablets deliver the same nutrients sugar-free.</p>
+          <div class="card__detail"><p>Glucose syrup, corn syrup, or cane sugar base. Tablets and capsules deliver the same micronutrients without the sugar.</p></div>
+        </article>
+
+      </div>
       <div class="empty-state" id="empty-state" hidden>No items match your search. Try a different term or reset filters.</div>
     </div>
   </section>
@@ -192,21 +523,31 @@
         <div class="energy-callout__card">
           <h4>C4 Original (powder)</h4>
           <p>Contains <strong>no BCAAs</strong>. Formula: caffeine, beta-alanine, creatine nitrate,
-          L-arginine, L-citrulline, N-acetyl-L-tyrosine, B-vitamins, sucralose.</p>
+          L-arginine, L-citrulline, N-acetyl-L-tyrosine, B-vitamins, sucralose. Its beta-alanine
+          and arginine content is <strong>not an autophagy concern</strong> — those are weak,
+          non-proteinogenic triggers at best, not the leucine-driven signal that actually
+          suppresses it.</p>
         </div>
         <div class="energy-callout__card">
           <h4>C4 Energy + Aminos</h4>
-          <p>From the <em>same manufacturer</em> — contains <code>5g BCAA/EAA</code>. Two products,
-          one brand, opposite verdicts. The label is the only reliable input.</p>
+          <p>From the <em>same manufacturer</em> — contains <code>5g BCAA/EAA</code>, the
+          established trigger. Two products, one brand, opposite verdicts. The label is the only
+          reliable input.</p>
         </div>
       </div>
 
       <h3>What to read on a label</h3>
       <div class="label-read">
         <div class="label-read__item label-read__item--fail">
-          <h4>Amino acids → breaks autophagy</h4>
-          <p>BCAA, EAA, leucine, isoleucine, valine, glutamine, citrulline, arginine, taurine,
-          tyrosine, beta-alanine, collagen. Leucine is the primary trigger for mTOR.</p>
+          <h4>Established mTOR / autophagy triggers</h4>
+          <p>Leucine, isoleucine, valine, BCAA/EAA blends, whey or collagen protein, glutamine.
+          Leucine is the primary driver — these reliably activate mTOR and suppress autophagy.</p>
+        </div>
+        <div class="label-read__item label-read__item--warn">
+          <h4>Weak or theoretical — commonly overstated</h4>
+          <p>Beta-alanine, taurine, citrulline, arginine, tyrosine. Amino acids, yes — but
+          non-proteinogenic or lacking good evidence of suppressing autophagy at typical
+          supplement doses. Don't treat these as decisive on their own.</p>
         </div>
         <div class="label-read__item label-read__item--fail">
           <h4>Calories &amp; carbohydrate → breaks fat loss</h4>
@@ -225,7 +566,68 @@
           <thead>
             <tr><th>Product type</th><th>Fat loss</th><th>Autophagy</th><th>Clean fast</th></tr>
           </thead>
-          <tbody id="energy-matrix-body"></tbody>
+          <tbody id="energy-matrix-body">
+            <tr data-type="Zero-sugar energy drink">
+              <th scope="row">Zero-sugar energy drink</th>
+              <td class="cell cell--pass" data-lane="fatLoss" data-symbol="pass" data-note="0–15 calories">
+                <span class="cell__icon" aria-hidden="true">✅</span><span class="cell__label">Passes</span><small>0–15 calories</small>
+              </td>
+              <td class="cell cell--warn" data-lane="autophagy" data-symbol="warn" data-note="Usually outside it — genuine BCAA/EAA blends are the exception; taurine alone (common in energy drinks) is a weak, unconfirmed signal, not an established trigger">
+                <span class="cell__icon" aria-hidden="true">⚠️</span><span class="cell__label">Depends</span><small>Usually outside it — genuine BCAA/EAA blends are the exception; taurine alone is a weak, unconfirmed signal</small>
+              </td>
+              <td class="cell cell--fail" data-lane="cleanFast" data-symbol="fail" data-note="Sweeteners and flavor exclude it">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Sweeteners and flavor exclude it</small>
+              </td>
+            </tr>
+            <tr data-type="Stimulant-only pre-workout">
+              <th scope="row">Stimulant-only pre-workout</th>
+              <td class="cell cell--pass" data-lane="fatLoss" data-symbol="pass" data-note="Negligible calories">
+                <span class="cell__icon" aria-hidden="true">✅</span><span class="cell__label">Passes</span><small>Negligible calories</small>
+              </td>
+              <td class="cell cell--warn" data-lane="autophagy" data-symbol="warn" data-note="Beta-alanine, citrulline, and arginine are weak, theoretical mTOR triggers — not the established, leucine-driven kind">
+                <span class="cell__icon" aria-hidden="true">⚠️</span><span class="cell__label">Depends</span><small>Beta-alanine/citrulline/arginine are weak, theoretical triggers — not the established kind</small>
+              </td>
+              <td class="cell cell--fail" data-lane="cleanFast" data-symbol="fail" data-note="Flavored and sweetened">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Flavored and sweetened</small>
+              </td>
+            </tr>
+            <tr data-type="Amino or EAA pre-workout">
+              <th scope="row">Amino or EAA pre-workout</th>
+              <td class="cell cell--pass" data-lane="fatLoss" data-symbol="pass" data-note="On calories alone">
+                <span class="cell__icon" aria-hidden="true">✅</span><span class="cell__label">Passes</span><small>On calories alone</small>
+              </td>
+              <td class="cell cell--fail" data-lane="autophagy" data-symbol="fail" data-note="Decisively — EAAs are the established, leucine-driven trigger">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Decisively — EAAs are the established, leucine-driven trigger</small>
+              </td>
+              <td class="cell cell--fail" data-lane="cleanFast" data-symbol="fail" data-note="Flavored, sweetened, and full of aminos">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Flavored, sweetened, and full of aminos</small>
+              </td>
+            </tr>
+            <tr data-type="Carbohydrate-loaded pre-workout">
+              <th scope="row">Carbohydrate-loaded pre-workout</th>
+              <td class="cell cell--fail" data-lane="fatLoss" data-symbol="fail" data-note="Meaningful sugar/dextrose load">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Meaningful sugar/dextrose load</small>
+              </td>
+              <td class="cell cell--fail" data-lane="autophagy" data-symbol="fail" data-note="Calories and established aminos both present">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Calories and established aminos both present</small>
+              </td>
+              <td class="cell cell--fail" data-lane="cleanFast" data-symbol="fail" data-note="Fails on every count">
+                <span class="cell__icon" aria-hidden="true">❌</span><span class="cell__label">Breaks it</span><small>Fails on every count</small>
+              </td>
+            </tr>
+            <tr data-type="Plain caffeine tablet">
+              <th scope="row">Plain caffeine tablet</th>
+              <td class="cell cell--pass" data-lane="fatLoss" data-symbol="pass" data-note="No calories">
+                <span class="cell__icon" aria-hidden="true">✅</span><span class="cell__label">Passes</span><small>No calories</small>
+              </td>
+              <td class="cell cell--pass" data-lane="autophagy" data-symbol="pass" data-note="No amino acids, no mTOR activation">
+                <span class="cell__icon" aria-hidden="true">✅</span><span class="cell__label">Passes</span><small>No amino acids, no mTOR activation</small>
+              </td>
+              <td class="cell cell--pass" data-lane="cleanFast" data-symbol="pass" data-note="No flavor, no sweetener">
+                <span class="cell__icon" aria-hidden="true">✅</span><span class="cell__label">Passes</span><small>No flavor, no sweetener</small>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
@@ -234,6 +636,11 @@
         <div class="energy-tool__row">
           <select id="energy-select" aria-label="Choose a product type">
             <option value="">Choose a product type…</option>
+            <option value="Zero-sugar energy drink">Zero-sugar energy drink</option>
+            <option value="Stimulant-only pre-workout">Stimulant-only pre-workout</option>
+            <option value="Amino or EAA pre-workout">Amino or EAA pre-workout</option>
+            <option value="Carbohydrate-loaded pre-workout">Carbohydrate-loaded pre-workout</option>
+            <option value="Plain caffeine tablet">Plain caffeine tablet</option>
           </select>
           <div class="lane-group">
             <label><input type="radio" name="energy-lane" value="fatLoss" checked><span>Fat loss</span></label>
@@ -241,11 +648,67 @@
             <label><input type="radio" name="energy-lane" value="cleanFast"><span>Clean fast</span></label>
           </div>
         </div>
-        <div id="energy-verdict"></div>
+        <div id="energy-verdict"><p class="muted">Pick a product above to see its verdict.</p></div>
       </div>
 
       <h3 style="margin-top:44px;">Terms decoded</h3>
-      <div id="glossary-list"></div>
+      <div id="glossary-list">
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-0">
+            <span>Beta-alanine</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="gloss-0">
+            <p>An amino acid that buffers acid accumulation in muscle, extending endurance. It's responsible for the tingling, prickling sensation across the face and neck that arrives about fifteen minutes in — that sensation is <em>paresthesia</em>. It's harmless, temporary, and not an allergic reaction. It's non-proteinogenic (not used to build muscle protein), and there's no good evidence it suppresses autophagy at typical supplement doses — treat it as a weak, theoretical concern rather than a decisive one, unlike leucine or BCAAs.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-1">
+            <span>L-citrulline / L-arginine</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="gloss-1">
+            <p>Amino acids that raise nitric oxide and widen blood vessels, producing the “pump.” Same category as beta-alanine: technically amino acids, but weak or theoretical mTOR activators with no strong evidence of suppressing autophagy at supplement doses — not in the same tier as leucine or BCAAs.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-2">
+            <span>Creatine monohydrate</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="gloss-2">
+            <p>Not a protein-building amino acid and not a meaningful insulin trigger. Plain unflavored creatine monohydrate is widely treated as neutral across metabolic definitions. Creatine nitrate and flavored blends carry other ingredients that may not be.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-3">
+            <span>Taurine</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="gloss-3">
+            <p>An amino acid, though not one used in protein synthesis, and — like beta-alanine, citrulline, and arginine — only a weak, theoretical mTOR activator. Genuinely ambiguous rather than a clear break; excluded under strict definitions out of caution.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-4">
+            <span>mTOR</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="gloss-4">
+            <p>The body's growth switch (mechanistic target of rapamycin). Amino acids activate it. Fasting deactivates it. Autophagy runs only while it's off.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="gloss-5">
+            <span>Autophagy</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="gloss-5">
+            <p>Literally “self-eating.” Cells break down damaged components and recycle the materials. The process increases during nutrient scarcity, which is the principal reason people undertake longer fasts.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -308,14 +771,15 @@
           One conflict worth naming: black coffee is metabolically trivial and permitted under
           fat-loss definitions, but many labs require <strong style="color:var(--ink)">water only</strong>
           before lipid and metabolic panels, because coffee can shift triglyceride and glucose readings.
-          Sugar-free gum is likewise excluded before a draw — it has been shown to alter cortisol,
-          insulin, C-peptide, triglycerides, and amylase.
+          Sugar-free gum is likewise excluded before a draw — a small study reported that it altered
+          cortisol, insulin, C-peptide, triglycerides, and amylase, and labs tend to err cautious even
+          though a single small study doesn't settle the question.
         </p>
       </div>
 
       <div class="med-block">
         <h3>Before surgery or sedation</h3>
-        <p class="section-lede"><strong style="color:var(--ink)">The surgical team's instructions govern.</strong> For context, standard anesthesia guidance for healthy adults undergoing elective procedures:</p>
+        <p class="section-lede"><strong style="color:var(--ink)">The surgical team's instructions govern.</strong> For context, standard anesthesia guidance for healthy adults undergoing elective procedures — per the American Society of Anesthesiologists' Practice Guidelines for Preoperative Fasting (2017 update):</p>
         <ul class="med-list">
           <li><span>Clear liquids — water, black coffee, black tea, pulp-free juice</span><strong>2 hours</strong></li>
           <li><span>Light meal</span><strong>6 hours</strong></li>
@@ -337,7 +801,54 @@
       <p class="section-eyebrow">Including where it's weaker than usually claimed</p>
       <h2>The Evidence</h2>
       <p class="section-lede">Tap a topic to see what's actually established versus what's a reasonable inference.</p>
-      <div id="evidence-list"></div>
+      <div id="evidence-list">
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="ev-0">
+            <span>Coffee and autophagy</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="ev-0">
+            <p>The frequently cited study is Pietrocola et al., “Coffee induces autophagy in vivo,” <em>Cell Cycle</em>, 2014, which found increased autophagic flux in liver, muscle, and heart tissue within 1–4 hours, alongside mTORC1 inhibition. Two qualifications rarely accompany the citation: the study was conducted in mice — human data remains limited — and decaffeinated coffee produced the same effect, meaning caffeine is not the active compound; the authors attribute the result to polyphenols. The supportable claim is that coffee appears not to interfere with a fast, with promising animal evidence suggesting benefit — not that it triggers autophagy in a given human on a given morning.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="ev-1">
+            <span>Amino acids and mTOR</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="ev-1">
+            <p>Well established — for the proteinogenic branched-chain amino acids. Leucine and other BCAAs activate mTORC1, which suppresses autophagy. The cell and animal biology is replicated and forms the mechanistic basis for the protein rule. The honest qualification: precise dose and duration thresholds in living humans are not established. “One gram of BCAA immediately terminates autophagy” is a reasonable inference rather than a measured human finding. The direction is certain; the threshold isn't. That certainty does not extend to every amino acid — beta-alanine, taurine, citrulline, arginine, and tyrosine are chemically amino acids but weak or unproven mTOR activators; see the label-reading guide in the Energy &amp; Pre-Workout section.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="ev-2">
+            <span>Chewing gum</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="ev-2">
+            <p>Genuinely mixed, and smaller than it sounds. A controlled trial in fasted healthy men found no significant differences in glucose, insulin, or GIP following sugar-free gum. A separate small clinical study — 22 volunteers — reported shifts in cortisol, insulin, C-peptide, triglycerides, and amylase; it's the basis for standard guidance excluding gum before blood draws, but the sample size is too small to call the finding settled. The reasonable reading: gum may produce small, short-lived changes — enough that labs exclude it out of caution, not enough that it's established to affect fat loss.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="ev-3">
+            <span>Non-caloric sweeteners</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="ev-3">
+            <p>The common claim that sweeteners cause insulin resistance is not supported at the confidence level it's usually stated. Established: sucralose, aspartame, and stevia produce no meaningful insulin or glucose response independently, including in people with type 2 diabetes. Contested: whether long-term use alters gut microbiota in ways affecting glucose tolerance. Research exists — notably Suez et al., <em>Nature</em>, 2014, and subsequent work — but findings are inconsistent and effects vary substantially between individuals. This is an open question rather than a settled finding.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="ev-4">
+            <span>Preoperative fasting</span><span class="accordion__chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="accordion__panel" id="ev-4">
+            <p>The 2-hour clear-liquid window is formal clinical guidance from the American Society of Anesthesiologists' Practice Guidelines for Preoperative Fasting (2017 update), also endorsed in comparable form by the European Society of Anaesthesiology and Intensive Care (ESAIC). Standard guidance for healthy adults undergoing elective procedures: clear liquids (water, black coffee, black tea, pulp-free juice) — 2 hours; light meal — 6 hours; fatty or heavy meal — 8 hours; non-human milk — 6 hours. The variable being managed is aspiration risk under anesthesia, not insulin.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -389,12 +900,11 @@
 </footer>
 
 <footer class="site-footer">
-  <p>What Breaks a Fast? — a reference guide, not a rulebook. <a href="#top">Back to top ↑</a></p>
+  <p>Does This Break My Fast? — a reference guide, not a rulebook. <a href="#top">Back to top ↑</a></p>
 </footer>
 
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
-<script src="js/data.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
