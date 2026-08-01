@@ -18,7 +18,7 @@
   /* Text */
   --ink: #e6e1d3;
   --ink-dim: #b7b3a2;
-  --ink-faint: #8a8778;
+  --ink-faint: #9a9787;
 
   /* Accents */
   --gold: #d7a651;
@@ -76,6 +76,15 @@ a {
 a:hover { text-decoration-color: var(--gold); }
 
 ::selection { background: var(--gold-soft); color: #1a1a16; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
@@ -135,6 +144,7 @@ section:last-of-type { border-bottom: none; }
   top: 0;
   z-index: 40;
   background: rgba(25, 29, 26, 0.92);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-soft);
 }
@@ -472,7 +482,7 @@ tbody tr:hover td, tbody tr:hover th { background: var(--surface-raised); }
 
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 14px;
 }
 
@@ -570,23 +580,38 @@ tbody tr:hover td, tbody tr:hover th { background: var(--surface-raised); }
   color: var(--ink-dim);
 }
 
+/* Default (no-JS): fully open, laid out in normal flow so content is
+   readable without JavaScript. The .js class (set by an inline script in
+   <head>) is what turns this into a collapsible panel.
+   Note: the vertical padding and divider border live on this container,
+   not on the inner <p> — padding/border on the grid item itself would
+   stop the row from ever reaching a true 0px collapse, since only the
+   item's *content* size (not its box-model additions) is zeroed out by
+   min-height:0 + overflow:hidden. */
 .card__detail {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease;
-  padding: 0 16px;
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--border-soft);
 }
-.card.is-open .card__detail {
-  max-height: 400px;
+.js .card__detail {
+  grid-template-rows: 0fr;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: grid-template-rows 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease;
+}
+.js .card.is-open .card__detail {
+  grid-template-rows: 1fr;
+  padding-top: 12px;
   padding-bottom: 16px;
 }
 .card__detail p {
+  overflow: hidden;
+  min-height: 0;
   margin: 0;
   padding-left: 74px;
   font-size: 0.9rem;
   color: var(--ink);
-  border-top: 1px solid var(--border-soft);
-  padding-top: 12px;
 }
 .card.is-hidden { display: none; }
 
@@ -738,14 +763,34 @@ select {
 }
 .accordion__chevron { color: var(--gold); transition: transform 0.2s ease; }
 .accordion__item.is-open .accordion__chevron { transform: rotate(180deg); }
+/* Default (no-JS): fully open, same reasoning as .card__detail above —
+   padding lives on the container, never on the collapsing grid item. */
 .accordion__panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 18px;
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 0 18px 18px;
 }
-.accordion__item.is-open .accordion__panel { max-height: 500px; padding-bottom: 18px; }
-.accordion__panel p { margin: 0; color: var(--ink-dim); font-size: 0.92rem; line-height: 1.6; }
+.js .accordion__panel {
+  grid-template-rows: 0fr;
+  padding-bottom: 0;
+  transition: grid-template-rows 0.3s ease, padding-bottom 0.3s ease;
+}
+.js .accordion__item.is-open .accordion__panel {
+  grid-template-rows: 1fr;
+  padding-bottom: 18px;
+}
+.accordion__panel > p,
+.accordion__panel > .accordion__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.accordion__panel p {
+  margin: 0;
+  color: var(--ink-dim);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.accordion__panel-inner p + p { margin-top: 12px; }
 .accordion__panel em { color: var(--ink); font-style: italic; }
 
 /* ---------------------------------------------------------- Religious list */
@@ -869,9 +914,16 @@ footer.site-footer a { color: var(--ink-dim); }
     border-bottom: 1px solid var(--border-soft);
     flex-direction: column;
     padding: 10px;
-    display: none;
   }
-  .sitenav__links.is-open { display: flex; }
+  /* Without JS there's no toggle behavior, so the menu stays open and
+     usable by default; .js is what turns it into a collapsible dropdown. */
+  .js .sitenav__links { display: none; }
+  .js .sitenav__links.is-open { display: flex; }
   .nav-toggle { display: inline-flex; }
   section { padding: 44px 0; }
+}
+
+@media (max-width: 640px) {
+  .card__summary { padding-left: 16px; }
+  .card__detail p { padding-left: 16px; }
 }
